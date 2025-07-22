@@ -14,42 +14,36 @@
     "test": "npm run proxy-validator",
     "manual-start": "node run-command.mjs start",
     "kill": "node run-command.mjs stop kill",
-    "build": "node run-command.mjs build && cd lib/rammerhead && npm install && npm run build",
+    "build": "node run-command.mjs build && npm run build-rammerhead",
+    "build-rammerhead": "cd lib/rammerhead && npm install --production --no-optional && npm run build",
+    "build-rammerhead-safe": "cd lib/rammerhead && npm install --production --no-optional --ignore-scripts && npm run build || echo 'Rammerhead build failed, continuing...'",
     "proxy-validator": "node proxyServiceValidator.js",
     "workflow-test": "node run-command.mjs workflow",
     "deployment": "npm install && npm run build && node backend.js",
-    "clean": "rimraf node_modules package-lock.json",
-    "audit-fix": "npm audit fix"
+    "postinstall": "npm run patch-sqlite"
   },
   "keywords": ["proxy", "node.js", "unblocker"],
   "author": "Titanium Network",
   "license": "AGPL-3.0",
   "dependencies": {
-    "@fastify/helmet": "^12.0.1",
-    "@fastify/static": "^8.0.1",
+    "@fastify/helmet": "^11.1.1",
+    "@fastify/static": "^7.0.4",
     "@mercuryworkshop/bare-as-module3": "^2.2.2",
     "@mercuryworkshop/bare-mux": "^2.1.7",
     "@mercuryworkshop/epoxy-transport": "^2.1.27",
     "@mercuryworkshop/libcurl-transport": "^1.3.15",
     "@titaniumnetwork-dev/ultraviolet": "^3.2.10",
     "@tomphttp/bare-server-node": "^2.0.3",
-    "axios": "^1.7.7",
-    "fastify": "^5.1.0",
+    "axios": "^1.7.2",
+    "fastify": "^4.28.1",
     "mime-types": "^2.1.35",
     "pm2": "^5.4.2",
-    "puppeteer": "^23.8.0",
+    "puppeteer": "^22.12.1",
     "wisp-server-node": "^1.1.7",
     "ws": "^8.18.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.25.9",
-    "@babel/node": "^7.25.9",
-    "esbuild": "^0.24.0",
-    "rimraf": "^6.0.1"
-  },
-  "overrides": {
-    "rimraf": "^6.0.1",
-    "glob": "^11.0.0",
-    "@eslint/config-array": "^0.19.0"
+    "@babel/node": "^7.25.0",
+    "esbuild": "^0.23.0"
   }
 }
