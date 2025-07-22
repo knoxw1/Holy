@@ -14,13 +14,10 @@
     "test": "npm run proxy-validator",
     "manual-start": "node run-command.mjs start",
     "kill": "node run-command.mjs stop kill",
-    "build": "node run-command.mjs build && npm run build-rammerhead",
-    "build-rammerhead": "cd lib/rammerhead && npm install --production --no-optional && npm run build",
-    "build-rammerhead-safe": "cd lib/rammerhead && npm install --production --no-optional --ignore-scripts && npm run build || echo 'Rammerhead build failed, continuing...'",
+    "build": "node run-command.mjs build && cd lib/rammerhead && npm install --no-optional --ignore-scripts && npm run build || echo 'Rammerhead build failed, continuing...'",
     "proxy-validator": "node proxyServiceValidator.js",
     "workflow-test": "node run-command.mjs workflow",
-    "deployment": "npm install && npm run build && node backend.js",
-    "postinstall": "npm run patch-sqlite"
+    "deployment": "npm install && npm run build && node backend.js"
   },
   "keywords": ["proxy", "node.js", "unblocker"],
   "author": "Titanium Network",
