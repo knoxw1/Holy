@@ -19,13 +19,9 @@
     "workflow-test": "node run-command.mjs workflow",
     "deployment": "npm install && npm run build && node backend.js"
   },
-  "keywords": [
-    "proxy",
-    "node.js",
-    "unblocker"
-  ],
+  "keywords": ["proxy", "node.js", "unblocker"],
   "author": "Titanium Network",
-  "license": "GNU AFFERO",
+  "license": "AGPL-3.0",
   "dependencies": {
     "@fastify/helmet": "^11.1.1",
     "@fastify/static": "^7.0.4",
@@ -46,10 +42,5 @@
   "devDependencies": {
     "@babel/node": "^7.25.0",
     "esbuild": "^0.23.0"
-  }
-}
-{
-  "scripts": {
-    "build": "[my-framework] build --output public"
   }
 }
