@@ -1,4 +1,23 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "public"
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend.js",
+      "use": "@vercel/node",
+      "config": {
+        "serverFiles": ["lib/**", "src/**", "public/**"]
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/backend.js"
+    }
+  ],
+  "functions": {
+    "backend.js": {
+      "maxDuration": 30
+    }
+  }
 }
